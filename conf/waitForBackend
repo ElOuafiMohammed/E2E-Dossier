@@ -1,0 +1,13 @@
+#!/bin/bash
+adress="${@:1}"
+unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
+for ((i=1; i<=20000; i++)); do
+    echo $i
+    c=$(curl -o /dev/null -s -w "%{http_code}\n" $adress)
+    echo $c
+    if [ $c -eq 200 ] 
+    then 
+      i=20000 
+    fi
+done
+

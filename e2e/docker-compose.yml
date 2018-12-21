@@ -1,0 +1,58 @@
+version: "2"
+volumes:
+  squash-tm-db:
+services:
+  
+  selenium:
+    restart: always
+    image: selenium/standalone-chrome:3.11.0
+    volumes:
+    - /dev/shm:/dev/shm
+    ports:
+    - 4444:4444
+  protractor:
+    restart: always
+    build: ../TestsProtractor/build
+    tty: true
+    links:
+    - selenium:selenium
+    volumes: 
+    - ../test-output:/frontend/test-output
+    - ../conf:/frontend/conf
+    - ../test-input:/frontend/test-input
+  squash-tm-pg:
+    restart: always
+    ports:
+    - 32761:5432/tcp
+    environment:
+      POSTGRES_DB: squashtm
+      POSTGRES_PASSWORD: Ch4ng3M3
+      POSTGRES_USER: squashtm
+    image: postgres
+    volumes:
+    - squash-tm-db:/var/lib/postgresql/data
+
+  squash-tm:
+    restart: always
+    ports:
+    - 32760:8080/tcp
+    image: fjudith/squash-tm
+    environment:
+      DB_TYPE: postgresql
+      DB_HOST: squash-tm-pg
+      DB_PORT: 5432
+      DB_NAME: squashtm
+      DB_USERNAME: squashtm
+      DB_PASSWORD: Ch4ng3M3
+    links:
+    - squash-tm-pg:postgres
+  pgadmin:
+    restart: always
+    ports:
+    - 32762:80
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@akka.eu
+      PGADMIN_DEFAULT_PASSWORD: admin
+    links:
+    - squash-tm-pg:squash-tm-pg

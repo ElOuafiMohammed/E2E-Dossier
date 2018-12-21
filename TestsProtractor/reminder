@@ -1,0 +1,3 @@
+opt="--force-rm --no-cache"
+	java -Dwebdriver.chrome.driver="/usr/local/lib/node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_2.38" -jar /usr/local/lib/node_modules/protractor/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.12.0.jar 
+

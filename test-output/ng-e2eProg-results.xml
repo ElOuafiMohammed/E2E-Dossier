@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="8" time="15701">
+ <testsuite name="[E2E].Test E2E Programme -&gt;" timestamp="2018-08-08T10:53:13" hostname="localhost" time="15.701" errors="0" tests="8" skipped="0" disabled="0" failures="0">
+  <testcase classname="[E2E].Test E2E Programme -&gt;" name="Must show -&gt; accueil" time="6.468" />
+  <testcase classname="[E2E].Test E2E Programme -&gt;" name="Must show all buttons" time="1.792" />
+  <testcase classname="[E2E].Test E2E Programme -&gt;" name="Click sur le bouton -&gt; Creer programme" time="0.27" />
+  <testcase classname="[E2E].Test E2E Programme -&gt;" name="Renseigne le champ -&gt; Numero de programme" time="0.353" />
+  <testcase classname="[E2E].Test E2E Programme -&gt;" name="Renseigne le champ -&gt; annee de debut" time="1.175" />
+  <testcase classname="[E2E].Test E2E Programme -&gt;" name="Renseigne le champ -&gt; annee de fin" time="0.264" />
+  <testcase classname="[E2E].Test E2E Programme -&gt;" name="Click sur le bouton -&gt; creer" time="0.271" />
+  <testcase classname="[E2E].Test E2E Programme -&gt;" name="Petite pause cafe avant de terminer :)" time="5.107" />
+ </testsuite>
+</testsuites>

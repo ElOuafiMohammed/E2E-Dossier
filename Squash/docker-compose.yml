@@ -1,0 +1,26 @@
+squash-tm-pg:
+  ports:
+  - 32761:5432/tcp
+  environment:
+    POSTGRES_DB: squashtm
+    POSTGRES_PASSWORD: Ch4ng3M3
+    POSTGRES_USER: squashtm
+  image: postgres
+  volumes:
+  - ./squash-tm-db:/var/lib/postgresql/data
+
+squash-tm:
+  ports:
+  - 32760:8080/tcp
+  image: fjudith/squash-tm
+  links:
+  - squash-tm-pg:postgres
+pgadmin:
+  ports:
+  - 32762:80
+  image: dpage/pgadmin4
+  environment:
+    PGADMIN_DEFAULT_EMAIL: admin@akka.eu
+    PGADMIN_DEFAULT_PASSWORD: admin
+  links:
+  - squash-tm-pg:squash-tm-pg
